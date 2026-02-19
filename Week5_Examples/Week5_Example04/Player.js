@@ -22,6 +22,28 @@ class Player {
   draw() {
     fill(50, 110, 255);
     noStroke();
-    rect(this.x - 12, this.y - 12, 24, 24, 5);
+    ellipse(this.x - 12, this.y - 12, 32, 24, 5);
+
+    if (keyIsDown(RIGHT_ARROW) === true) {
+      ellipse(this.x - 12, this.y - 12, 32, 24, 5);
+      triangle(
+        this.x - 12,
+        this.y - 12,
+        this.x - 30,
+        this.y + 4,
+        this.x - 30,
+        this.y - 24,
+      );
+    } else if (keyIsDown(LEFT_ARROW) === true) {
+      ellipse(this.x - 12, this.y - 12, 32, 24, 5);
+      triangle(
+        this.x + 12,
+        this.y - 12,
+        this.x + 30,
+        this.y + 4,
+        this.x + 30,
+        this.y - 24,
+      );
+    }
   }
 }
