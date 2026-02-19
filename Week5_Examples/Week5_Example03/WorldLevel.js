@@ -1,3 +1,9 @@
+let water;
+
+function preload() {
+  water = loadImage("assets/underwater_W5.png");
+}
+
 class WorldLevel {
   constructor(json) {
     // Keep the raw json around (useful for debugging / teaching)
@@ -18,6 +24,7 @@ class WorldLevel {
 
   drawBackground() {
     background(220);
+    image(water, 0, 0, this.w, this.h);
   }
 
   // Draw the world in WORLD coordinates (caller should translate camera first)
@@ -26,7 +33,7 @@ class WorldLevel {
     noStroke();
     fill(this.bg[0], this.bg[1], this.bg[2]);
     rect(0, 0, this.w, this.h);
-
+    image(water, 0, 0, this.w, this.h);
     // Grid
     stroke(245);
     for (let x = 0; x <= this.w; x += this.gridStep) line(x, 0, x, this.h);

@@ -1,3 +1,9 @@
+let direction = 0;
+
+let r = 0;
+
+let l = 0;
+
 class Player {
   constructor(x, y, speed) {
     this.x = x;
@@ -23,17 +29,10 @@ class Player {
     fill(50, 110, 255);
     noStroke();
     ellipse(this.x - 12, this.y - 12, 32, 24, 5);
+    drawFish("r");
 
     if (keyIsDown(RIGHT_ARROW) === true) {
-      ellipse(this.x - 12, this.y - 12, 32, 24, 5);
-      triangle(
-        this.x - 12,
-        this.y - 12,
-        this.x - 30,
-        this.y + 4,
-        this.x - 30,
-        this.y - 24,
-      );
+      drawFish("r");
     } else if (keyIsDown(LEFT_ARROW) === true) {
       ellipse(this.x - 12, this.y - 12, 32, 24, 5);
       triangle(
@@ -45,5 +44,20 @@ class Player {
         this.y - 24,
       );
     }
+  }
+}
+
+function drawFish(direction) {
+  if (direction === "r") {
+    triangle(
+      this.x - 12,
+      this.y - 12,
+      this.x - 30,
+      this.y + 4,
+      this.x - 30,
+      this.y - 24,
+    );
+  } else if (direction === "l") {
+    //Draw tail on the other side
   }
 }

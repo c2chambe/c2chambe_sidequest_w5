@@ -1,5 +1,10 @@
+let water;
+
+function preload() {}
+
 class WorldLevel {
   constructor(json) {
+    this.water = loadImage("../Assets/underwater_W5.png");
     this.schemaVersion = json.schemaVersion ?? 1;
 
     this.w = json.world?.w ?? 2400;
@@ -11,16 +16,20 @@ class WorldLevel {
 
     // NEW: camera tuning knob from JSON (data-driven)
     this.camLerp = json.camera?.lerp ?? 0.12;
+    console.log("test");
   }
 
   drawBackground() {
-    background(220);
+    console.log(this.water);
+    image(this.water, 0, 0);
   }
 
   drawWorld() {
     noStroke();
     fill(this.bg[0], this.bg[1], this.bg[2]);
     rect(0, 0, this.w, this.h);
+
+    image(water, 0, 0, this.w, this.h);
 
     stroke(245);
     for (let x = 0; x <= this.w; x += this.gridStep) line(x, 0, x, this.h);
