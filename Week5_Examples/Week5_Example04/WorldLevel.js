@@ -10,7 +10,7 @@ class WorldLevel {
     this.w = json.world?.w ?? 2400;
     this.h = json.world?.h ?? 1600;
     this.bg = json.world?.bg ?? [235, 235, 235];
-    this.gridStep = json.world?.gridStep ?? 160;
+    //this.gridStep = json.world?.gridStep ?? 160;
 
     this.obstacles = json.obstacles ?? [];
 

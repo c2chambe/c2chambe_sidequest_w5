@@ -1,9 +1,3 @@
-let direction = 0;
-
-let r = 0;
-
-let l = 0;
-
 class Player {
   constructor(x, y, speed) {
     this.x = x;
@@ -29,44 +23,47 @@ class Player {
     fill(50, 110, 255);
     noStroke();
     ellipse(this.x - 12, this.y - 12, 32, 24, 5);
-    drawFish("r");
+    fill("black");
+    circle(this.x - 10, this.y - 15, 5, 5, 5);
 
-    if (keyIsDown(RIGHT_ARROW) === true) {
-      drawFish("r");
+    this.drawHitBox(170, 1040, 430, 200); //EEL Hitbox
+    this.drawHitBox(1060, 410, 300, 300); // HOOK Hitbox
+    this.drawHitBox(1960, 730, 180, 120); //CLOWNFISH Hitbox
+    this.drawHitBox(1350, 1374, 700, 225); //OCTOPUS Hitbox
+
+    if (keyIsDown(RIGHT_ARROW) === true || keyIsDown(UP_ARROW) === true) {
+      fill(50, 110, 255);
       triangle(
-        this.x - 12,
+        this.x - 25,
         this.y - 12,
-        this.x - 30,
+        this.x - 50,
         this.y + 4,
-        this.x - 30,
+        this.x - 50,
         this.y - 24,
       );
-    } else if (keyIsDown(LEFT_ARROW) === true) {
-      ellipse(this.x - 12, this.y - 12, 32, 24, 5);
+    } else if (
+      keyIsDown(LEFT_ARROW) === true ||
+      keyIsDown(DOWN_ARROW) === true
+    ) {
+      fill(50, 110, 255);
       triangle(
-        this.x + 12,
+        this.x,
         this.y - 12,
-        this.x + 30,
+        this.x + 25,
         this.y + 4,
-        this.x + 30,
+        this.x + 25,
         this.y - 24,
       );
     }
   }
-}
 
-function drawFish(direction) {
-  if (direction === "r") {
-    triangle(
-      this.x - 12,
-      this.y - 12,
-      this.x - 30,
-      this.y + 4,
-      this.x - 30,
-      this.y - 24,
-    );
-  } else if (direction === "l") {
-    //Draw tail on the other side
-    this.x;
+  drawHitBox(x, y, w, h) {
+    noStroke();
+    noFill();
+    rect(x, y, w, h);
+
+    if (this.x >= x && this.y >= y && this.x <= x + w && this.y <= y + h) {
+      console.log("true");
+    }
   }
 }
