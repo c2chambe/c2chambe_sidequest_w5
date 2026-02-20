@@ -33,6 +33,14 @@ class Player {
 
     if (keyIsDown(RIGHT_ARROW) === true) {
       drawFish("r");
+      triangle(
+        this.x - 12,
+        this.y - 12,
+        this.x - 30,
+        this.y + 4,
+        this.x - 30,
+        this.y - 24,
+      );
     } else if (keyIsDown(LEFT_ARROW) === true) {
       ellipse(this.x - 12, this.y - 12, 32, 24, 5);
       triangle(
@@ -59,5 +67,6 @@ function drawFish(direction) {
     );
   } else if (direction === "l") {
     //Draw tail on the other side
+    this.x;
   }
 }
