@@ -47,41 +47,45 @@ class Player {
         this.x + 25,
         this.y - 24,
       );
-    }
 
-    if (
-      this.drawHitBox(170, 1040, 430, 200) ||
-      this.drawHitBox(1060, 410, 300, 300) ||
-      this.drawHitBox(1960, 730, 180, 120) ||
-      this.drawHitBox(1350, 1374, 700, 225)
-    ) {
-      this.s = 6;
-    } else {
-      this.s = 3;
-    }
+      if (
+        this.drawHitBox(170, 1040, 430, 200) ||
+        this.drawHitBox(1060, 410, 300, 300) ||
+        this.drawHitBox(1960, 730, 180, 120) ||
+        this.drawHitBox(1350, 1374, 700, 225)
+      ) {
+        this.s = 6;
+      } else {
+        this.s = 3;
+      }
 
-    if (keyIsDown(RIGHT_ARROW) === true) {
-      fill(50, 110, 255);
-      triangle(
-        this.x - 25,
-        this.y - 12,
-        this.x - 50,
-        this.y + 4,
-        this.x - 50,
-        this.y - 24,
-      );
-      d = 0;
-    } else if (keyIsDown(LEFT_ARROW) === true) {
-      fill(50, 110, 255);
-      triangle(
-        this.x,
-        this.y - 12,
-        this.x + 25,
-        this.y + 4,
-        this.x + 25,
-        this.y - 24,
-      );
-      d = 1;
+      if (this.drawHitBox(1050, 1147, 20, 70)) {
+        deathScreen();
+      }
+
+      if (keyIsDown(RIGHT_ARROW) === true) {
+        fill(50, 110, 255);
+        triangle(
+          this.x - 25,
+          this.y - 12,
+          this.x - 50,
+          this.y + 4,
+          this.x - 50,
+          this.y - 24,
+        );
+        d = 0;
+      } else if (keyIsDown(LEFT_ARROW) === true) {
+        fill(50, 110, 255);
+        triangle(
+          this.x,
+          this.y - 12,
+          this.x + 25,
+          this.y + 4,
+          this.x + 25,
+          this.y - 24,
+        );
+        d = 1;
+      }
     }
   }
 
@@ -96,5 +100,25 @@ class Player {
     } else {
       return false;
     }
+  }
+
+  drawHurtBox(x, y, w, h) {
+    noStroke();
+    noFill();
+    rect(x, y, w, h);
+
+    if (this.x >= x && this.y >= y && this.x <= x + w && this.y <= y + h) {
+      this.deathBox();
+    }
+  }
+
+  deathBox() {
+    background(0, 0, 0);
+    textSize(80);
+    textMode(CENTER, CENTER);
+    stroke("white");
+    text("There is always a bigger fish.", 1200, 600);
+    textSize(20);
+    text("Press R to respawn", 1200, 800);
   }
 }
