@@ -1,4 +1,6 @@
 class Player {
+  hitboxes = ["EEL", "HOOK", "CLOWNFISH", "OCTOPUS"];
+
   constructor(x, y, speed) {
     this.x = x;
     this.y = y;
@@ -26,10 +28,16 @@ class Player {
     fill("black");
     circle(this.x - 10, this.y - 15, 5, 5, 5);
 
-    this.drawHitBox(170, 1040, 430, 200); //EEL Hitbox
-    this.drawHitBox(1060, 410, 300, 300); // HOOK Hitbox
-    this.drawHitBox(1960, 730, 180, 120); //CLOWNFISH Hitbox
-    this.drawHitBox(1350, 1374, 700, 225); //OCTOPUS Hitbox
+    if (
+      this.drawHitBox(170, 1040, 430, 200) ||
+      this.drawHitBox(1060, 410, 300, 300) ||
+      this.drawHitBox(1960, 730, 180, 120) ||
+      this.drawHitBox(1350, 1374, 700, 225)
+    ) {
+      this.s = 6;
+    } else {
+      this.s = 3;
+    }
 
     if (keyIsDown(RIGHT_ARROW) === true || keyIsDown(UP_ARROW) === true) {
       fill(50, 110, 255);
@@ -59,11 +67,14 @@ class Player {
 
   drawHitBox(x, y, w, h) {
     noStroke();
-    noFill();
+    //noFill();
+    fill("red");
     rect(x, y, w, h);
 
     if (this.x >= x && this.y >= y && this.x <= x + w && this.y <= y + h) {
-      console.log("true");
+      return strue;
+    } else {
+      return false;
     }
   }
 }
