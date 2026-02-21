@@ -1,3 +1,4 @@
+let d = 0;
 class Player {
   hitboxes = ["EEL", "HOOK", "CLOWNFISH", "OCTOPUS"];
 
@@ -27,6 +28,26 @@ class Player {
     ellipse(this.x - 12, this.y - 12, 32, 24, 5);
     fill("black");
     circle(this.x - 10, this.y - 15, 5, 5, 5);
+    fill(50, 110, 255);
+    if (d === 0) {
+      triangle(
+        this.x - 25,
+        this.y - 12,
+        this.x - 50,
+        this.y + 4,
+        this.x - 50,
+        this.y - 24,
+      );
+    } else if (d === 1) {
+      triangle(
+        this.x,
+        this.y - 12,
+        this.x + 25,
+        this.y + 4,
+        this.x + 25,
+        this.y - 24,
+      );
+    }
 
     if (
       this.drawHitBox(170, 1040, 430, 200) ||
@@ -39,7 +60,7 @@ class Player {
       this.s = 3;
     }
 
-    if (keyIsDown(RIGHT_ARROW) === true || keyIsDown(UP_ARROW) === true) {
+    if (keyIsDown(RIGHT_ARROW) === true) {
       fill(50, 110, 255);
       triangle(
         this.x - 25,
@@ -49,10 +70,8 @@ class Player {
         this.x - 50,
         this.y - 24,
       );
-    } else if (
-      keyIsDown(LEFT_ARROW) === true ||
-      keyIsDown(DOWN_ARROW) === true
-    ) {
+      d = 0;
+    } else if (keyIsDown(LEFT_ARROW) === true) {
       fill(50, 110, 255);
       triangle(
         this.x,
@@ -62,17 +81,18 @@ class Player {
         this.x + 25,
         this.y - 24,
       );
+      d = 1;
     }
   }
 
   drawHitBox(x, y, w, h) {
     noStroke();
-    //noFill();
-    fill("red");
+    noFill();
+
     rect(x, y, w, h);
 
     if (this.x >= x && this.y >= y && this.x <= x + w && this.y <= y + h) {
-      return strue;
+      return true;
     } else {
       return false;
     }
