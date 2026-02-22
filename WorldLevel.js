@@ -26,9 +26,8 @@ class WorldLevel {
     //background(0);
   }
 
-  drawHUD(player, camX, camY) {
-    noStroke();
-    fill(255);
-    text("Week 5: The Adventure of Little Fish", 12, 20); // changed name
+  drawHUD(player, camX, camY, g) {
+    g.fill(255);
+    g.text("Week 5: The Adventure of Little Fish", 12, 20); // changed name
   }
 }
