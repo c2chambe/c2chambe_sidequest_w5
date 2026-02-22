@@ -70,8 +70,6 @@ function draw() {
   //g.clear();
   level.drawBackground(g);
   g.push();
-  //g.fill("blue");
-  //g.ellipse(0, 0, 1200, 800);
   g.beginClip({ invert: true });
   g.ellipse(player.x - 20, player.y - 10, 175, 100);
   g.endClip();
@@ -85,10 +83,13 @@ function draw() {
 
   push();
   translate(-camX, -camY);
-  image(g, 0, 0);
+
   player.draw(g);
 
+  image(g, 0, 0);
+
   pop();
+
   // level.drawHUD(player, camX, camY);
 }
 

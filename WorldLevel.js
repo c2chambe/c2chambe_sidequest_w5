@@ -30,19 +30,5 @@ class WorldLevel {
     noStroke();
     fill(255);
     text("Week 5: The Adventure of Little Fish", 12, 20); // changed name
-    text(
-      "camLerp(JSON): " +
-        this.camLerp +
-        "  Player: " +
-        (player.x | 0) +
-        "," +
-        (player.y | 0) +
-        "  Cam: " +
-        (camX | 0) +
-        "," +
-        (camY | 0),
-      12,
-      40,
-    );
   }
 }
