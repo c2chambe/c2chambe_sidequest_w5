@@ -22,15 +22,15 @@ class Player {
     this.y += (dy / len) * this.s;
   }
 
-  draw() {
-    fill(50, 110, 255);
-    noStroke();
-    ellipse(this.x - 12, this.y - 12, 32, 24, 5);
-    fill("black");
-    circle(this.x - 10, this.y - 15, 5, 5, 5);
-    fill(50, 110, 255);
+  draw(g) {
+    g.fill(50, 110, 255);
+    g.noStroke();
+    g.ellipse(this.x - 12, this.y - 12, 32, 24, 5);
+    g.fill("black");
+    g.circle(this.x - 10, this.y - 15, 5, 5, 5);
+    g.fill(50, 110, 255);
     if (d === 0) {
-      triangle(
+      g.triangle(
         this.x - 25,
         this.y - 12,
         this.x - 50,
@@ -39,7 +39,7 @@ class Player {
         this.y - 24,
       );
     } else if (d === 1) {
-      triangle(
+      g.triangle(
         this.x,
         this.y - 12,
         this.x + 25,
@@ -55,14 +55,14 @@ class Player {
       this.drawHitBox(1960, 730, 180, 120) ||
       this.drawHitBox(1350, 1374, 700, 225)
     ) {
-      this.s = 6;
+      this.s = 8;
     } else {
       this.s = 3;
     }
 
     if (keyIsDown(RIGHT_ARROW) === true) {
-      fill(50, 110, 255);
-      triangle(
+      g.fill(50, 110, 255);
+      g.triangle(
         this.x - 25,
         this.y - 12,
         this.x - 50,
@@ -72,8 +72,8 @@ class Player {
       );
       d = 0;
     } else if (keyIsDown(LEFT_ARROW) === true) {
-      fill(50, 110, 255);
-      triangle(
+      g.fill(50, 110, 255);
+      g.triangle(
         this.x,
         this.y - 12,
         this.x + 25,
@@ -86,10 +86,10 @@ class Player {
   }
 
   drawHitBox(x, y, w, h) {
-    noStroke();
-    noFill();
+    //noStroke();
+    //noFill();
 
-    rect(x, y, w, h);
+    //rect(x, y, w, h);
 
     if (this.x >= x && this.y >= y && this.x <= x + w && this.y <= y + h) {
       return true;
