@@ -4,7 +4,7 @@ function preload() {}
 
 class WorldLevel {
   constructor(json) {
-    this.water = loadImage("../../Assets/underwater_W5.png");
+    this.water = loadImage("Assets/underwater_W5.png");
     this.schemaVersion = json.schemaVersion ?? 1;
 
     this.w = json.world?.w ?? 2400;
