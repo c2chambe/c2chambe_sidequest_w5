@@ -19,21 +19,10 @@ class WorldLevel {
     this.camLerp = json.camera?.lerp ?? 0.12;
   }
 
-  drawBackground(x, y) {
-    push();
-    image(this.water, 0, 0);
-
-    beginClip({ invert: true });
-    ellipse(x - 20, y - 10, 175, 100);
-    endClip();
-    rect(0, 0, 10000, 10000);
-    //background(0);
-    fill("black");
-    rect(0, 0, 10000, 10000);
-    pop();
+  drawBackground(g) {
+    g.image(this.water, 0, 0, 2400, 1600);
 
     // rect(0, 0, 10000, 10000);
-
     //background(0);
   }
 

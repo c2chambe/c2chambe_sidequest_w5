@@ -21,6 +21,7 @@ const VIEW_H = 480;
 let worldData;
 let level;
 let player;
+let g;
 
 let camX = 0;
 let camY = 0;
@@ -30,6 +31,7 @@ function preload() {
 }
 
 function setup() {
+  g = createGraphics(2400, 1600);
   createCanvas(VIEW_W, VIEW_H);
   textFont("sans-serif");
   textSize(14);
@@ -65,14 +67,29 @@ function draw() {
   camX = lerp(camX, targetX, camLerp);
   camY = lerp(camY, targetY, camLerp);
 
+  //g.clear();
+  level.drawBackground(g);
+  g.push();
+  //g.fill("blue");
+  //g.ellipse(0, 0, 1200, 800);
+  g.beginClip({ invert: true });
+  g.ellipse(player.x - 20, player.y - 10, 175, 100);
+  g.endClip();
+  g.background(0);
+  g.fill("black");
+  //translate(camX, camY);
+  g.rect(0, 0, 2400, 1600);
+
+  g.pop();
+  // background(100, 230, 30);
+
   push();
   translate(-camX, -camY);
-  level.drawBackground(player.x, player.y);
-  player.draw();
+  image(g, 0, 0);
+  player.draw(g);
 
   pop();
-
-  level.drawHUD(player, camX, camY);
+  // level.drawHUD(player, camX, camY);
 }
 
 function keyPressed() {
