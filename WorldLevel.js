@@ -26,10 +26,13 @@ class WorldLevel {
     beginClip({ invert: true });
     ellipse(x - 20, y - 10, 175, 100);
     endClip();
+    rect(0, 0, 10000, 10000);
     //background(0);
     fill("black");
     rect(0, 0, 10000, 10000);
     pop();
+
+    // rect(0, 0, 10000, 10000);
 
     //background(0);
   }
