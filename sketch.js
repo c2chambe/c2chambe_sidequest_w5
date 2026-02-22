@@ -65,12 +65,12 @@ function draw() {
   camX = lerp(camX, targetX, camLerp);
   camY = lerp(camY, targetY, camLerp);
 
-  // push();
+  push();
   translate(-camX, -camY);
   level.drawBackground(player.x, player.y);
   player.draw();
 
-  //pop();
+  pop();
 
   level.drawHUD(player, camX, camY);
 }
