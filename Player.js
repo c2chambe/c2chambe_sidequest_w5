@@ -55,7 +55,7 @@ class Player {
       this.drawHitBox(1960, 730, 180, 120) ||
       this.drawHitBox(1350, 1374, 700, 225)
     ) {
-      this.s = 8;
+      this.s = 10;
     } else {
       this.s = 3;
     }
